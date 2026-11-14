@@ -1,0 +1,125 @@
+\documentclass[10pt,a4paper]{extarticle}
+\usepackage[margin=0.72in,top=0.80in,bottom=0.70in,headheight=19pt,headsep=11pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx,amsmath,amssymb,booktabs,microtype,xcolor,tabularx,array,float}
+\usepackage{titlesec,fancyhdr,enumitem}
+\usepackage[hidelinks]{hyperref}
+\definecolor{navy}{HTML}{18324A}
+\definecolor{muted}{HTML}{586A7B}
+\definecolor{line}{HTML}{CED8DF}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4.0pt}
+\setlength{\textfloatsep}{7pt}
+\setlength{\intextsep}{5pt}
+\setlength{\abovecaptionskip}{4pt}
+\setlength{\belowcaptionskip}{2pt}
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.13}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\footnotesize\color{muted} RENZO HERRERA / OPTICAL INSTRUMENTATION}
+\fancyhead[R]{\footnotesize\color{muted} ENGINEERING CASE STUDY}
+\fancyfoot[C]{\footnotesize\color{muted}\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{line}\leaders\hrule height \headrulewidth\hfill}}
+\titleformat{\section}{\large\bfseries\color{navy}}{\thesection.}{0.55em}{}
+\titlespacing*{\section}{0pt}{10pt}{4pt}
+\titleformat{\subsection}{\normalsize\bfseries\color{navy}}{}{0em}{}
+\titlespacing*{\subsection}{0pt}{6pt}{2pt}
+
+\begin{document}
+\begin{center}
+{\LARGE\bfseries\color{navy} Improving Fringe Readability in a\\[2pt] 532 nm Michelson Interferometer}\par
+\vspace{6pt}
+{\small Renzo Herrera \quad\textbar\quad Montclair State University \quad\textbar\quad Mentor: Dr. Rodica Martin}\par
+\vspace{4pt}
+{\footnotesize\color{muted} Undergraduate experimental optics \hspace{6pt}\textbullet\hspace{6pt} Thermo-optic characterization \hspace{6pt}\textbullet\hspace{6pt} Engineering portfolio}\par
+\end{center}
+\vspace{3pt}
+{\color{line}\hrule}
+\vspace{8pt}
+\textbf{Overview.} I used a 532 nm Michelson interferometer to investigate temperature-dependent optical-path changes in terbium gallium garnet (TGG), cerium fluoride (CeF$_3$), and fused silica. Early recordings contained dense, ambiguous fringe structure that made reliable fringe counting difficult. I worked through the problems by reducing air disturbances, adjusting the optical alignment and sample mounting, improving temperature-probe placement, and introducing automatic temperature logging. Later measurements produced much clearer traces. This report documents the instrumentation work and its limits, rather than claiming a quantified improvement in accuracy or detector noise.
+
+\section{Experimental objective and setup}
+Changes in sample temperature can alter the optical path through a material, shifting the interference pattern of a Michelson interferometer. In this setup, a 532 nm laser was divided into two paths; the measurement arm contained the heated sample, and the recombined light was monitored by an optical power detector. Temperature readings were collected during heating and cooling intervals so fringe shifts could be compared against the observed temperature change.
+
+My role grew as the project progressed. Under Dr. Martin's mentorship, I took primary responsibility for routine alignment, sample positioning, measurements, and troubleshooting. I also designed a more stable sample mount, soldered temperature-probe extensions, and configured multichannel temperature logging. The work was performed in a research setting with mentorship and collaboration; the case study focuses on the improvements I personally carried out.
+
+\begin{figure}[H]\centering
+\includegraphics[width=0.99\linewidth]{figures/conceptual_schematic.png}
+\caption{Simplified illustration of the interferometer's measurement principle. The arrangement is conceptual, not a scale drawing or an as-built optical layout.}\label{fig:layout}
+\end{figure}
+
+\begin{figure}[H]\centering
+\includegraphics[width=0.90\linewidth]{figures/instrumentation_photos.png}
+\caption{Photographs cropped from the original undergraduate research poster: shielding, temperature logger, and soldered probe connections. These are low-resolution source images.}\label{fig:instrumentation}
+\end{figure}
+
+\textbf{Scope of the work.} The disturbances discussed here include air movement, alignment drift, mechanical stability, and data-display artifacts in a laboratory interferometer. They are not equivalent to the sensing, control, and noise-coupling problems of an operating gravitational-wave detector.
+
+\clearpage
+\section{The problem and the experimental changes}
+On June 4, a TGG recording showed many overlapping fluctuations. Distinguishing genuine temperature-related fringes from other changes was difficult. A preliminary count of about 123 fringes across a 37\,$^\circ$C interval led to a value inconsistent with other TGG trials, suggesting that the counting window and recording quality needed closer attention.
+
+I approached the problem by changing the setup and checking the resulting recordings rather than accepting the first fringe count.
+
+\begin{table}[H]\centering\small
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}p{0.26\linewidth}X@{}}\toprule
+Observed issue & Change made / reason \\\midrule
+Air-driven fluctuations & Installed metal shielding around the interferometer and a cloth cover above it, leaving clearance for heater ventilation. \\
+Unstable or unclear fringes & Revisited beam alignment and detector focusing; designed a more stable mount and refined sample positioning. \\
+Temperature-readout limitations & Soldered probe-wire extensions, positioned probes nearer the samples, added two-probe measurements, and automated temperature logging. \\
+Plotting anomalies & Investigated apparent ``ghost points'' in IGOR Pro before relying on fringe counts from the affected graphs. \\\bottomrule
+\end{tabularx}
+\end{table}
+
+The laboratory notes report clearer, more distinguishable fringes after the first round of shielding and detector adjustments on June 5. Further alignment and measurement changes accumulated over subsequent sessions. Figure~\ref{fig:tgg} compares the early June 4 trace with a July 8 heating trace after that iterative work.
+
+\begin{figure}[H]\centering
+\includegraphics[width=\linewidth]{figures/tgg_before_after_clean.png}
+\caption{Original IGOR Pro exports from two different TGG runs. Left: June 4, with densely overlapping features. Right: July 8, with more visually separable extrema. The comparison is qualitative: settings, temperature histories, and multiple experimental changes were not controlled as a single-variable test.}\label{fig:tgg}
+\end{figure}
+
+\begin{figure}[H]\centering
+\includegraphics[width=0.92\linewidth]{figures/Screenshot (91).png}
+\caption{July 8 TGG cooling recording, showing another interval with distinguishable interference features. Axes and data are reproduced from the original plot export.}\label{fig:tggcool}
+\end{figure}
+
+\textbf{Observed outcome.} Later heating and cooling traces were easier to interpret and count. That is meaningful progress in instrument usability, but the plots alone do not establish a numerical reduction in noise, uncertainty, or systematic error.
+
+\clearpage
+\section{Measurement approach and selected results}
+The working notes estimated a temperature-normalized fringe response using the fringe count $N$, wavelength $\lambda$, sample thickness $t$, and measured temperature excursion $\Delta T$:
+\begin{equation}
+R_{\mathrm{fringe}}=\frac{N\lambda}{2t\,\Delta T}.
+\label{eq:fringe}
+\end{equation}
+Here the factor of two corresponds to the round-trip optical path in the simplified geometry. With $\lambda$ and $t$ expressed in length units, the expression has units K$^{-1}$. The original poster used a different dimensional label; therefore the numbers below are presented only as \emph{preliminary values transcribed from the laboratory notes}, not independently validated material coefficients.
+
+\begin{table}[H]\centering\small
+\caption{Selected reported fringe-derived values, expressed on the original $10^{-6}$ numerical scale. Heating and cooling are distinct analysis intervals.}\label{tab:results}
+\begin{tabular}{@{}lrr@{}}\toprule
+Material and experimental run & Heating & Cooling \\\midrule
+TGG, July 8 & 43.3 & 38.0 \\
+CeF$_3$, June 25, run 1 & 5.40 & 5.70 \\
+CeF$_3$, June 25, run 2 & 5.14 & 5.56 \\
+Fused silica, July 1, broad-temperature interval & 29.0 & 26.6 \\\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]\centering
+\includegraphics[width=\linewidth]{figures/fused_silica_heating_cooling_clean.png}
+\caption{Original fused-silica heating and cooling plot exports from July 1. Clear fringe structure in selected intervals permitted repeated counts, although the heating and cooling histories differed.}\label{fig:fs}
+\end{figure}
+
+\section{Interpretation and limitations}
+The final undergraduate poster reported a CeF$_3$ value of 5.66 versus 46.1 for TGG, corresponding to an 87.7\% relative difference on its reported scale. That comparison should not yet be taken as a validated intrinsic material-property improvement. The four June 25 CeF$_3$ values in the working notes average to about 5.45, not 5.66; the poster's selection and averaging conventions have not been reconciled. An additional fused-silica cooling entry contains an inconsistent temperature interval, so it was omitted from Table~\ref{tab:results}.
+
+Other limitations include imperfect temperature equilibration, gradients within the heated samples, ambiguous fringe-count boundaries, drift in alignment, differences between heating and cooling, and incomplete evidence that all acquisition settings were identical across comparison runs. Original exported plots are available, but the report does not include raw time-series files or a formal uncertainty budget.
+
+\section{Engineering takeaway}
+The strongest result of this project is the troubleshooting process itself: identifying why interference data were difficult to use, making changes to the optical and thermal measurement setup, checking whether the traces improved, and separating instrument behavior from a plotting artifact. By the later sessions, the fringe structure was substantially clearer and the interferometer more usable for the intended measurements.
+
+\vspace{3pt}
+{\footnotesize\color{muted}\textit{Source and attribution.} Based on my undergraduate laboratory manuscript, original IGOR Pro plot exports, and research poster from Montclair State University. Research mentored by Dr. Rodica Martin. This is an independent engineering portfolio summary, not an official LIGO publication or a claim of LIGO detector calibration.}
+\end{document}
